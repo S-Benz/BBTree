@@ -3,5 +3,5 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp BBtree.h.h BBTree.cpp)
+set(SOURCE_FILES main.cpp BBTree.h BBTree.cpp)
 add_executable(bbtree ${SOURCE_FILES})
