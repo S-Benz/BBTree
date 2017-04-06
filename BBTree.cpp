@@ -3,7 +3,7 @@
 
 bool BBTree::Node::search(const int key) const {
     bool result;
-    if(this->key < key) {
+    if (this->key < key) {
         result = this->right->search(key);
     } else {
         result = this->left->search(key);
@@ -14,8 +14,8 @@ bool BBTree::Node::search(const int key) const {
 BBTree::Node *BBTree::Node::insert(const int key, const double alpha) {
     Node *insertedNode = nullptr;
 
-    if(this->key < key) {
-        if(this->right == nullptr) {
+    if (this->key < key) {
+        if (this->right == nullptr) {
             this->right = new Node(key);
             insertedNode = this->right;
         } else {
@@ -23,8 +23,8 @@ BBTree::Node *BBTree::Node::insert(const int key, const double alpha) {
         }
     }
 
-    if(this-> key > key) {
-        if(this->left == nullptr) {
+    if (this->key > key) {
+        if (this->left == nullptr) {
             this->left = new Node(key);
             insertedNode = this->left;
         } else {
@@ -40,21 +40,19 @@ BBTree::Node *BBTree::Node::remove(const int key, const double alpha) {
 }
 
 int BBTree::Node::getWeight() {
-    int totalWeight = this->weight;
-    if(this->left == nullptr && this->right != nullptr) {
-        totalWeight = this->right->getWeight() + 1;
+    int weight = 1;
+    if (this != nullptr) {
+        weight = this->left->getWeight() + this->right->getWeight();
     }
-    if(this->left != nullptr && this->right == nullptr) {
-        totalWeight = this->left->getWeight() + 1;
-    }
-    if(this->left != nullptr && this->right != nullptr) {
-        totalWeight = this->right->getWeight() + this->left->getWeight();
-    }
-    return totalWeight;
+    return weight;
+}
+
+double BBTree::Node::getBalance() {
+    return this->left->getWeight()/this->getWeight();
 }
 
 bool BBTree::search(const int key) const {
-    if(root != nullptr) {
+    if (root != nullptr) {
         return root->search(key);
     }
     return false;

@@ -16,6 +16,7 @@ private:
         Node *insert(const int key, const double alpha);
         Node *remove(const int key, const double alpha);
         int getWeight();
+        double getBalance();
     };
 
     const double alpha;
