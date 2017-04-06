@@ -12,9 +12,10 @@ private:
         int weight = 2; // Anzahl Blätter
         Node(const int k) : key(k) {}
         Node(const int k, Node *l, Node *r) : key(k), left(l), right(r) {}
-        bool search(const int) const;
-        Node *insert(const int, const double);
-        Node *remove(const int, const double);
+        bool search(const int key) const;
+        Node *insert(const int key, const double alpha);
+        Node *remove(const int key, const double alpha);
+        int getWeight();
     };
 
     const double alpha;
@@ -24,9 +25,9 @@ public:
 
     BBTree(const double a) : alpha(a) {}
 
-    bool search(const int) const;
-    void insert(const int);
-    void remove(const int);
+    bool search(const int key) const;
+    void insert(const int key);
+    void remove(const int key);
 
 };
 
